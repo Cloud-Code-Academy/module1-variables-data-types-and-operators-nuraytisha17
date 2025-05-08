@@ -207,7 +207,8 @@ public with sharing class VariablesDataTypesOperators {
    
     public static Integer convertMinutesToMilliseconds(Integer minutes) {
         final Integer MILLISECONDS_PER_MINUTE = 60000; // Made this value a constant, and moved inside the curly braces to declare the variable and return result
-        return minutes * MILLISECONDS_PER_MINUTE; // Replaced null with the formula to get the minute conversion result
+        Integer minsToMilSeconds = minutes * MILLISECONDS_PER_MINUTE; // Assigning variable to the conversion formula
+        return minsToMilSeconds; // Replaced null with the assigned variable 
     }    
 
     /**

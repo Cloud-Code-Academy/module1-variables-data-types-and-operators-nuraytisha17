@@ -50,7 +50,6 @@ public class VariablesDataTypesOperatorsTest {
         result = VariablesDataTypesOperators.division(5, 2);
         Assert.areEqual(2.5, result, 'Incorrect division result with double value');
     }
-
     @IsTest
     static void testIsEven() {
         Boolean result = VariablesDataTypesOperators.isEven(10);

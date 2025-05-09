@@ -18,7 +18,7 @@
  * If statements are not specifically covered in the lesson this module, but review module 2 flow control section for an overview if needed.
  * Resources: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_if_else.htm 
  * 
- * @author Your Name
+ * @author Nuray Tisha
  */
 
 public with sharing class VariablesDataTypesOperators {
@@ -31,9 +31,17 @@ public with sharing class VariablesDataTypesOperators {
      * @param b The second number.
      * @return The sum of the two numbers, or null if either number is null.
      */
-    public static Integer addition(Integer a, Integer b) {  
-        return null; // Replace null with the variable you used to store the result
+    public static Integer addition(Integer a, Integer b) { 
+        if (a == null || b == null) {
+            return null;
+        }
+        return a + b;
     }
+    /* Feedback:
+    1. Watch your indentation, this will matter as your code grows and becomes more complex.
+    2. You don't have to store a result in a variable in memory just to return that variable.
+    You can just directly return the result to avoid creating the variable in memory.
+    */
 
     /**
      * Question 2
@@ -44,8 +52,13 @@ public with sharing class VariablesDataTypesOperators {
      * @return The difference between the two numbers.
      */
     public static Integer subtraction(Integer a, Integer b) {
-        return null; // Replace null with the variable you used to store the result
+        return a - b;
     }
+    /* Feedback:
+    1. You don't have to store a result in a variable in memory just to return that variable. You can just directly return the result to avoid creating the variable in memory.
+    2. You don't always have to check for null, for now focus on checking for null when the question tells you to. 
+    As you progress through out the course you will start to learn more about when to check for null values.
+    */
 
     /**
      * Question 3
@@ -56,8 +69,9 @@ public with sharing class VariablesDataTypesOperators {
      * @return The product of the two numbers.
      */
     public static Integer multiplication(Integer a, Integer b) {
-        return null; // Replace null with the variable you used to store the result
+        return a * b; // Replaced null with the assigned variable that provide multiplication of a and b
     }
+    
 
     /**
      * Question 4
@@ -69,7 +83,10 @@ public with sharing class VariablesDataTypesOperators {
      * @return The quotient of the division, or 0 if the denominator is zero.
      */
     public static Double division(Double a, Double b) {
-        return null; // Replace null with the variable you used to store the result
+        if (b == 0) {
+            return 0; 
+        }
+        return a / b;
     }
 
     /**
@@ -83,8 +100,12 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the number is even, False otherwise.
      */
     public static Boolean isEven(Integer num) {
-        return null; // Replace null with the variable you used to store the result
+        return Math.mod(num, 2) == 0;
     }
+    /* Feedback: 
+    1. Watch your formatting, this will pay off as your code grows and becomes far more complex to read.
+    2. For added practice I want you to think about what this line of code would resolve to and how you could use it to solve this problem in the fewest lines of code possible.
+    Math.mod(num,2) == 0
 
     /**
      * Question 6
@@ -94,8 +115,12 @@ public with sharing class VariablesDataTypesOperators {
      * @return true if the number is positive, false otherwise.
      */
     public static Boolean isPositive(Integer num) {
-        return null; // Replace null with the variable you used to store the result
-    }
+            return num > 0; // else return false
+        }
+    /* Feedback:
+    1. Watch your formatting, this will pay off as your code grows and becomes far more complex to read.
+    2. For added practice I want you to think about what this line of code would resolve to and how you could use it to solve this problem in the fewest lines of code possible.
+    num > 0
 
     /**
      * Question 7
@@ -106,7 +131,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The concatenated string.
      */
     public static String concatenateStrings(String str1, String str2) {
-        return null; // Replace null with the variable you used to store the result
+        return str1 + str2; // return the assigned variable to get the result
     }
 
 	/**
@@ -121,8 +146,14 @@ public with sharing class VariablesDataTypesOperators {
 	 * @return The complete sentence as a single String.
 	 */
 	public static String createSentence(String noun, String verb, String endingPunctuation) {
-		return null; // Replace null with the variable you used to store the result
+        String newSentence = 'The ' + noun + ' is ' + verb + endingPunctuation;
+		return newSentence; // Replaced null with the variable that is providing the combined sentence in the result
 	}
+    /* Feedback:
+    1. Watch your indentation.
+    2. Don't add your spaces as white space with extra plus symbols just add the spaces into the parts of the String surrounded by quotes,
+    this will work the same and be cleaner to read.
+
 
     /**
      * Question 9
@@ -134,7 +165,14 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is in the past, False otherwise.
      */
     public static Boolean isDateInPast(Date dt) {
-        return null; // Replace null with the variable you used to store the result
+        return dt < Date.today();
+    }
+    /* Feedback:
+    For advanced practice think about what dt < Date.today() resolves to and if you need to use an if statement to solve this one 
+    or if you could solve it in 1 line of code.
+    Simplified code:
+    public static Boolean isDateInPast(Date dt) {
+    return dt != null && dt < Date.today();
     }
 
     /**
@@ -147,7 +185,14 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is today or in the future, False otherwise.
      */
     public static Boolean isDateTodayOrFuture(Date dt) {
-        return null; // Replace null with the variable you used to store the result
+        return dt >= Date.today(); 
+    }
+    /* Feedback:
+    For advanced practice think about what dt < Date.today() resolves to and if you need to use an if statement to solve this one 
+    or if you could solve it in 1 line of code.
+    Simplified code:
+    public static Boolean isDateTodayOrFuture(Date dt) {
+    return dt != null && dt >= Date.today();
     }
 
     /**
@@ -159,10 +204,11 @@ public with sharing class VariablesDataTypesOperators {
      * @param minutes The number of minutes.
      * @return The number of milliseconds equivalent to the given number of minutes.
      */
-    Integer MILLISECONDS_PER_MINUTE = null; // Make this value a constant
+   
     public static Integer convertMinutesToMilliseconds(Integer minutes) {
-        Integer milliseconds;
-        return null; // Replace null with the variable you used to store the result
+        final Integer MILLISECONDS_PER_MINUTE = 60000; // Made this value a constant, and moved inside the curly braces to declare the variable and return result
+        Integer minsToMilSeconds = minutes * MILLISECONDS_PER_MINUTE; // Assigning variable to the conversion formula
+        return minsToMilSeconds; // Replaced null with the assigned variable 
     }    
 
     /**
@@ -176,8 +222,10 @@ public with sharing class VariablesDataTypesOperators {
      * @return The average of the three numbers.
      */
     public static Double averageOfThreeNumbers(Integer a, Integer b, Integer c) {
-        return null; // Replace null with the variable you used to store the result
+        return (a + b + c) / 3.0; // Replaced null with the assigned variable
     }
+    /* Feedback: 
+    Great thought to Cast each number to a Double, but you don't need to, just divide by a Double.
 
     /**
      * Question 13
@@ -190,11 +238,8 @@ public with sharing class VariablesDataTypesOperators {
      * @return The result of the adjusted arithmetic expression.
      */
     public static Integer adjustOrderOfOperations1(Integer a, Integer b, Integer c) {
-        // Add parentheses around the addition operation so that it is performed before multiplication
-        Integer result = a + b * c;
-
-        // Return the result
-        return null; // Replace null with the variable you used to store the result
+        Integer result = (a + b) * c; // Added parentheses around the addition operation so that it is performed before multiplication
+        return result; // Replaced null with the assigned variable
     }
 
     /**
@@ -206,8 +251,8 @@ public with sharing class VariablesDataTypesOperators {
         // Add parentheses in the below expression to change the result.
         // The result of the expression as it is right now is 43. 
         // You should add parentheses so that the result of the expression becomes 8.
-        Integer answer = 48 - 15 + 5 * 2;
-        return null; // Replace null with the variable you used to store the result
+        Integer answer = 48 - (15 + 5) * 2; //Added parentheses to change the result to be 8
+        return answer; // Replaced null with the assigned variable
     }
 
     /**
@@ -225,10 +270,10 @@ public with sharing class VariablesDataTypesOperators {
      * @return The result of the adjusted arithmetic expression.
      */
     public static Double complexOrderOfOperations(Integer a, Integer b, Integer c, Integer d, Integer e) {
-        // Add parentheses around the multiplication and subtraction operations so that they are performed before division and addition
-        Double result = a * b - c / (Double) d + e;
+        // Added parentheses around the multiplication and subtraction operations so that they are performed before division and addition
+        Double result = (a * b - c) / (Double) d + e; // Also converted parameter dataypes to double
 
-        return null; // Replace null with the variable you used to store the result
+        return result; // Replaced null with the assigned variable
     }
 
     /**
@@ -242,12 +287,12 @@ public with sharing class VariablesDataTypesOperators {
         final Double SUBTRACT_FACTOR = 32.0;
         final Double MULTIPLY_FACTOR = 5.0;
         final Double DIVIDE_FACTOR = 9.0;
+
+        Double fahrenheitConversion = (fahrenheit - SUBTRACT_FACTOR) * (MULTIPLY_FACTOR / DIVIDE_FACTOR); //used the constant variables to assign the values based on the formula
     
-        return null; // Replace null with the variable you used to store the result
+        return fahrenheitConversion; // Replaced null with the assigned variable with conversion formula
     }
-
     
-
     /**
      * Question 17
      * Performs division and returns the result as a casted Integer.
@@ -259,12 +304,16 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Integer performDivisionAndCast(Double a, Double b) {
         // Perform the division and cast (round down) off the result.
-        Double divisionResult = null;
+        Double divisionResult = a / b;
 
         // Write the code for type casting the divisionResult to an Integer
-        Integer roundedResult = null;
-        return null; // Replace null with the variable you used to store the result
+        Integer roundedResult = Integer.valueOf(divisionResult);
+        return roundedResult; // Replace null with the assigned variable to return rounded result
     }
+    /* Feedback:
+    Here is another way you can cast in Apex:
+    Integer.valueOf(divisionResult)
+    https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_integer.htm
 
     /**
      * Question 18
@@ -276,8 +325,8 @@ public with sharing class VariablesDataTypesOperators {
      * @return A Decimal representing the weekly paycheck.
      */
     public static Decimal calculateWeeklyPaycheck(Decimal hourlyRate, Double numberOfHours) {
-        // Calculate the weekly paycheck using the formula: rate multiplied by hours
-        return null; // Replace null with the variable you used to store the result
+        Decimal weeklyPaycheck = hourlyRate * numberOfHours; // Assigned weekly paycheck with a new variable, didn't need to convert datatype from Double to Decimal since they are similar
+        return weeklyPaycheck; // Replaced null with the assigned variable to get the weekly paycheck result
     }
 
     /**
@@ -291,8 +340,14 @@ public with sharing class VariablesDataTypesOperators {
      * @return A Decimal representing the monthly paycheck.
      */
     public static Decimal calculateMonthlyPaycheck(Decimal hourlyRate, Double numberOfHours) {
-        return null; // Replace null with the variable you used to store the result
+        Decimal weeklyPaycheck = hourlyRate * numberOfHours;
+        Integer numberOfWeeks = 4;
+        Decimal monthlyPaycheck = weeklyPaycheck * numberOfWeeks ;
+        return monthlyPaycheck;
     }
+    /* Feedback: 
+    Don't leave magic numbers throughout your code, instead store them in a variable with meaning.
+    Your future self and other developers will thank you when they have to refactor your code and remember what that number means.
 
     /**
      * Question 20
@@ -305,6 +360,11 @@ public with sharing class VariablesDataTypesOperators {
      * @return The total cost after applying the sales tax.
      */
     public static Decimal calculateTotalCost(Decimal pricePerUnit, Integer numberOfUnits, Decimal salesTaxRate) {
-        return null; // Replace null with the variable you used to store the result
+        Decimal totalCost = (pricePerUnit * numberOfUnits) * (1 + salesTaxRate);
+        return totalCost; // Replaced null with the assigned variable to get the total cost
     }
+    /* Feedback:
+    You don't need to Cast here, when you multiply a Decimal and an Integer in Apex, the result will be a Decimal 
+    through the system implicitly converting it.
+    */
 }

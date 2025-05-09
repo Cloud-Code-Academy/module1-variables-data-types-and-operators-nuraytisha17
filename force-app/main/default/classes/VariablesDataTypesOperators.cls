@@ -33,11 +33,15 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Integer addition(Integer a, Integer b) { 
         if (a == null || b == null) {
-        return null; // combining both null logic into one if statement
+            return null;
         }
-        Integer additionResult = a + b;
-        return additionResult; // Replaced null with the assigned variable that provide addition of a and b
+        return a + b;
     }
+    /* Feedback:
+    1. Watch your indentation, this will matter as your code grows and becomes more complex.
+    2. You don't have to store a result in a variable in memory just to return that variable.
+    You can just directly return the result to avoid creating the variable in memory.
+    */
 
     /**
      * Question 2
@@ -48,12 +52,13 @@ public with sharing class VariablesDataTypesOperators {
      * @return The difference between the two numbers.
      */
     public static Integer subtraction(Integer a, Integer b) {
-        if (a == null || b == null) {
-            return null; // handling null exception as best practice
-        }
-        Integer subtractionResult = a - b;
-        return subtractionResult; // Replaced null with the assigned variable that provide subtraction of a and b
+        return a - b;
     }
+    /* Feedback:
+    1. You don't have to store a result in a variable in memory just to return that variable. You can just directly return the result to avoid creating the variable in memory.
+    2. You don't always have to check for null, for now focus on checking for null when the question tells you to. 
+    As you progress through out the course you will start to learn more about when to check for null values.
+    */
 
     /**
      * Question 3
@@ -64,12 +69,9 @@ public with sharing class VariablesDataTypesOperators {
      * @return The product of the two numbers.
      */
     public static Integer multiplication(Integer a, Integer b) {
-        if (a == null || b == null) {
-            return null; // handling null exception as best practice
-        }
-        Integer multiplicationResult = a * b;
-        return multiplicationResult; // Replaced null with the assigned variable that provide multiplication of a and b
+        return a * b; // Replaced null with the assigned variable that provide multiplication of a and b
     }
+    
 
     /**
      * Question 4
@@ -81,14 +83,10 @@ public with sharing class VariablesDataTypesOperators {
      * @return The quotient of the division, or 0 if the denominator is zero.
      */
     public static Double division(Double a, Double b) {
-        if (a == null || b == null) {
-            return null; // handling null exception as best practice
+        if (b == 0) {
+            return 0; 
         }
-        else if (b == 0) {
-            return 0; //if statement returns 0 when the denominator b equals to 0
-        }
-        Double divisionResult = a / b;
-        return divisionResult; // Replaced null with the variables that provide division of a and b
+        return a / b;
     }
 
     /**
@@ -102,18 +100,12 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the number is even, False otherwise.
      */
     public static Boolean isEven(Integer num) {
-        if (num == null) {
-            return false;
-        } //checks for handling null exception 
-
-        Integer remainder = Math.mod(num, 2); //Get the remainder of num divided by 2
-        if (remainder == 0) {
-            return true;
-        } // checks if the number is even and return true
-       else {
-        return false; // return false 
-       } 
+        return Math.mod(num, 2) == 0;
     }
+    /* Feedback: 
+    1. Watch your formatting, this will pay off as your code grows and becomes far more complex to read.
+    2. For added practice I want you to think about what this line of code would resolve to and how you could use it to solve this problem in the fewest lines of code possible.
+    Math.mod(num,2) == 0
 
     /**
      * Question 6
@@ -123,16 +115,12 @@ public with sharing class VariablesDataTypesOperators {
      * @return true if the number is positive, false otherwise.
      */
     public static Boolean isPositive(Integer num) {
-        if (num == null) {
-            return false;
-        }  // handles null exception
-        else if (num > 0) {
-            return true;
-        } // checks if the number is greater than 0 it's positive
-        else {
-            return false; // else return false
+            return num > 0; // else return false
         }
-    }
+    /* Feedback:
+    1. Watch your formatting, this will pay off as your code grows and becomes far more complex to read.
+    2. For added practice I want you to think about what this line of code would resolve to and how you could use it to solve this problem in the fewest lines of code possible.
+    num > 0
 
     /**
      * Question 7
@@ -143,8 +131,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The concatenated string.
      */
     public static String concatenateStrings(String str1, String str2) {
-        String combinedStrings = str1 + str2; // Assigning variable concatenating both strings with + operator to get the result
-        return combinedStrings; // return the assigned variable to get the result
+        return str1 + str2; // return the assigned variable to get the result
     }
 
 	/**
@@ -159,9 +146,14 @@ public with sharing class VariablesDataTypesOperators {
 	 * @return The complete sentence as a single String.
 	 */
 	public static String createSentence(String noun, String verb, String endingPunctuation) {
-        String newSentence = 'The' + ' ' + noun + ' ' + 'is' + ' ' + verb + endingPunctuation; // Declared a new variable to combine the string with spaces and + operator
+        String newSentence = 'The ' + noun + ' is ' + verb + endingPunctuation;
 		return newSentence; // Replaced null with the variable that is providing the combined sentence in the result
 	}
+    /* Feedback:
+    1. Watch your indentation.
+    2. Don't add your spaces as white space with extra plus symbols just add the spaces into the parts of the String surrounded by quotes,
+    this will work the same and be cleaner to read.
+
 
     /**
      * Question 9
@@ -173,10 +165,14 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is in the past, False otherwise.
      */
     public static Boolean isDateInPast(Date dt) {
-        if (dt < Date.today()) {
-            return true; // This logic returns true if the Date template/class returns the date is before today
-        }
-        return false; // Replaced null with false when it passes the if statement logic, meaning the date is not in the past
+        return dt < Date.today();
+    }
+    /* Feedback:
+    For advanced practice think about what dt < Date.today() resolves to and if you need to use an if statement to solve this one 
+    or if you could solve it in 1 line of code.
+    Simplified code:
+    public static Boolean isDateInPast(Date dt) {
+    return dt != null && dt < Date.today();
     }
 
     /**
@@ -189,10 +185,14 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is today or in the future, False otherwise.
      */
     public static Boolean isDateTodayOrFuture(Date dt) {
-        if (dt >= Date.today()) {
-            return true; // This logic returns true if the Date template/class returns the date is today or day before today
-        }
-        return false; //  Replaced null with false when it passes the if statement logic, meaning the date is not in the future
+        return dt >= Date.today(); 
+    }
+    /* Feedback:
+    For advanced practice think about what dt < Date.today() resolves to and if you need to use an if statement to solve this one 
+    or if you could solve it in 1 line of code.
+    Simplified code:
+    public static Boolean isDateTodayOrFuture(Date dt) {
+    return dt != null && dt >= Date.today();
     }
 
     /**
@@ -222,10 +222,10 @@ public with sharing class VariablesDataTypesOperators {
      * @return The average of the three numbers.
      */
     public static Double averageOfThreeNumbers(Integer a, Integer b, Integer c) {
-        Double sumNumbers = (Double)a + (Double)b + (Double)c;
-        Double averageNumbers = sumNumbers / 3; //Not sure if I needed to use another variable to assign total numbers so just hardcoded for now
-        return averageNumbers; // Replaced null with the assigned variable
+        return (a + b + c) / 3.0; // Replaced null with the assigned variable
     }
+    /* Feedback: 
+    Great thought to Cast each number to a Double, but you don't need to, just divide by a Double.
 
     /**
      * Question 13
@@ -238,9 +238,7 @@ public with sharing class VariablesDataTypesOperators {
      * @return The result of the adjusted arithmetic expression.
      */
     public static Integer adjustOrderOfOperations1(Integer a, Integer b, Integer c) {
-        
         Integer result = (a + b) * c; // Added parentheses around the addition operation so that it is performed before multiplication
-
         return result; // Replaced null with the assigned variable
     }
 
@@ -294,9 +292,7 @@ public with sharing class VariablesDataTypesOperators {
     
         return fahrenheitConversion; // Replaced null with the assigned variable with conversion formula
     }
-
     
-
     /**
      * Question 17
      * Performs division and returns the result as a casted Integer.
@@ -311,9 +307,13 @@ public with sharing class VariablesDataTypesOperators {
         Double divisionResult = a / b;
 
         // Write the code for type casting the divisionResult to an Integer
-        Integer roundedResult = (Integer)divisionResult; // used typecasting to convert variable
+        Integer roundedResult = Integer.valueOf(divisionResult);
         return roundedResult; // Replace null with the assigned variable to return rounded result
     }
+    /* Feedback:
+    Here is another way you can cast in Apex:
+    Integer.valueOf(divisionResult)
+    https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_integer.htm
 
     /**
      * Question 18
@@ -340,10 +340,14 @@ public with sharing class VariablesDataTypesOperators {
      * @return A Decimal representing the monthly paycheck.
      */
     public static Decimal calculateMonthlyPaycheck(Decimal hourlyRate, Double numberOfHours) {
-        Decimal weeklyPaycheck = hourlyRate * numberOfHours; //Double datatype didn't need decimal conversion due to similar behavior
-        Decimal monthlyPaycheck = weeklyPaycheck * 4; // Assigned new variable to use the formula and get the monthly paycheck
-        return monthlyPaycheck; // Replaced null with the assigned variable
+        Decimal weeklyPaycheck = hourlyRate * numberOfHours;
+        Integer numberOfWeeks = 4;
+        Decimal monthlyPaycheck = weeklyPaycheck * numberOfWeeks ;
+        return monthlyPaycheck;
     }
+    /* Feedback: 
+    Don't leave magic numbers throughout your code, instead store them in a variable with meaning.
+    Your future self and other developers will thank you when they have to refactor your code and remember what that number means.
 
     /**
      * Question 20
@@ -356,7 +360,11 @@ public with sharing class VariablesDataTypesOperators {
      * @return The total cost after applying the sales tax.
      */
     public static Decimal calculateTotalCost(Decimal pricePerUnit, Integer numberOfUnits, Decimal salesTaxRate) {
-        Decimal totalCost = (pricePerUnit * (Decimal)numberOfUnits) * (1 + salesTaxRate); //Assigning new variable with the formula and typecasting Integer value to Decimal
+        Decimal totalCost = (pricePerUnit * numberOfUnits) * (1 + salesTaxRate);
         return totalCost; // Replaced null with the assigned variable to get the total cost
     }
+    /* Feedback:
+    You don't need to Cast here, when you multiply a Decimal and an Integer in Apex, the result will be a Decimal 
+    through the system implicitly converting it.
+    */
 }
